@@ -1,31 +1,15 @@
 import pygame
 from pygame.locals import *
 
-pygame.init()
-
-clock = pygame.time.Clock()
-fps = 60
-
-screen_width = 600
-screen_height = 800
-
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Explosion Demo')
-
 #define colours
 bg = (50, 50, 50)
-
-def draw_bg():
-	screen.fill(bg)
-
-
 #create Explosion class
 class Explosion(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
 		self.images = []
 		for num in range(1, 6):
-			img = pygame.image.load(f"img/exp{num}.png")
+			img = pygame.image.load(f"Explosion/img/exp{num}.png")
 			img = pygame.transform.scale(img, (100, 100))
 			self.images.append(img)
 		self.index = 0
@@ -52,7 +36,7 @@ class Explosion(pygame.sprite.Sprite):
 explosion_group = pygame.sprite.Group()
 
 
-run = True
+run = False
 while run:
 
 	clock.tick(fps)
@@ -75,5 +59,3 @@ while run:
 
 
 	pygame.display.update()
-
-pygame.quit()	
